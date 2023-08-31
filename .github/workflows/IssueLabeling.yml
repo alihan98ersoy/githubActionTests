@@ -9,15 +9,13 @@ jobs:
     permissions:
       issues: write
     steps:
-      - name: 'Labeling'
-        uses: actions/github-script@v6
+      - uses: actions/github-script@v6
         with:
           script: |
             github.rest.issues.addLabels({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              as
               labels: ["new"]
             })
   auto-assign:
@@ -31,7 +29,6 @@ jobs:
               assignees: alihan98ersoy
               allowSelfAssign: true
   add-comment:
-    if: github.event.label.name == 'new'
     runs-on: ubuntu-latest
     permissions:
       issues: write
