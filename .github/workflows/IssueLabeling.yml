@@ -9,22 +9,6 @@ jobs:
     permissions:
       issues: write
     steps:
-      - name: 'Auto-assign issue'
-        uses: pozil/auto-assign-issue@v1
-        with:
-          assignees: alihan98ersoy
-          allowSelfAssign: true
-      - name: 'Labeling'
-        uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.issues.addLabels({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              as
-              labels: ["new"]
-            })
       - name: Add comment
         uses: peter-evans/create-or-update-comment@5f728c3dae25f329afbe34ee4d08eef25569d79f
         with:
