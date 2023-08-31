@@ -9,11 +9,11 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: actions/github-script@v6
+      - name: 'Auto-assign issue'
+        uses: actions/github-script@v6
         with:
           assignees: alihan98ersoy
-          numOfAssignee: 1
-          allowSelfAssign: false
+          allowSelfAssign: true
           script: |
             github.rest.issues.addLabels({
               issue_number: context.issue.number,
