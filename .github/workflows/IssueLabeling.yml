@@ -2,7 +2,6 @@ name: Label issues
 on:
   issues:
     types:
-      - reopened
       - opened
 jobs:
   label_issues:
@@ -17,5 +16,9 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
+              as
               labels: ["new"]
+              assignees: "alihan98ersoy"
             })
+          body: |
+            This issue is available for anyone to work on. **Make sure to reference this issue in your pull request.** :sparkles: Thank you for your contribution! :sparkles:
