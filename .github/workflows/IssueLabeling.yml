@@ -9,9 +9,39 @@ jobs:
     permissions:
       issues: write
     steps:
+      - name: 'Labeling'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              as
+              labels: ["new"]
+            })
+  auto-assign:
+    runs-on: ubuntu-latest
+    permissions:
+        issues: write
+    steps:
+        - name: 'Auto-assign issue'
+          uses: pozil/auto-assign-issue@v1
+          with:
+              assignees: alihan98ersoy
+              allowSelfAssign: true
+  add-comment:
+    if: github.event.label.name == 'new'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
       - name: Add comment
         uses: peter-evans/create-or-update-comment@5f728c3dae25f329afbe34ee4d08eef25569d79f
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            This issue is available for anyone to work on. **Make sure to reference this issue in your pull request.** :sparkles: Thank you for your contribution! :sparkles:
+            This issue is available for anyone to work on. 
+            **Make sure to reference this issue in your pull request.** :sparkles: 
+            Thank you for your contribution! :sparkles:
+      
