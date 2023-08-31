@@ -11,6 +11,9 @@ jobs:
     steps:
       - uses: actions/github-script@v6
         with:
+          assignees: alihan98ersoy
+          numOfAssignee: 1
+          allowSelfAssign: false
           script: |
             github.rest.issues.addLabels({
               issue_number: context.issue.number,
@@ -18,7 +21,6 @@ jobs:
               repo: context.repo.repo,
               as
               labels: ["new"]
-              assignees: "alihan98ersoy"
             })
           body: |
             This issue is available for anyone to work on. **Make sure to reference this issue in your pull request.** :sparkles: Thank you for your contribution! :sparkles:
