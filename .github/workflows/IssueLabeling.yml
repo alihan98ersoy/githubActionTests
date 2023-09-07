@@ -38,7 +38,5 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            This issue is available for anyone to work on. 
-            **Make sure to reference this issue in your pull request.** :sparkles: 
-            Thank you for your contribution! :sparkles:
+            &nbsp;Thank you for reporting this **issue/advice**. <br>We will get back to you as soon as possible. <br>&emsp;&emsp;&emsp;&emsp;Would you like to star our plugin <br>&emsp;&emsp;&emsp;to support us?:sparkles:
       
